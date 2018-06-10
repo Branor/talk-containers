@@ -1,0 +1,37 @@
+# Remove Exited containers
+docker ps -a | grep Exited  | cut -d ' ' -f1 | xargs docker rm
+
+# K8s deployment
+docker build -t branor/nodeapp:1.0 .
+
+# run container on k8s
+kubectl run nodeapp --image=branor/nodeapp:1.0 --port=6060
+
+# expose pod as external service
+kubectl expose deployment nodeapp --type=LoadBalancer
+kubectl get services
+
+# open the minikube-based IP in a browser
+minikube service nodeapp
+
+# update the app
+docker build -t branor/nodeapp:1.1 .
+
+kubectl set image deployment/nodeapp nodeapp=branor/nodeapp:1.1
+
+# cleanup
+kubectl delete service nodeapp
+kubectl delete deployment nodeapp
+docker rmi branor/nodeapp:1.0 branor/nodeapp:1.1 -f
+
+
+# using deployment and service yaml
+
+kubectl apply -f deployment.yaml 
+kubectl apply -f service.yaml
+
+kubectl describe deployment nodeapp
+# update
+
+kubectl apply -f deployment.yaml
+

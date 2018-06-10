@@ -1,0 +1,15 @@
+{
+  "name": "docker_logger_app",
+  "version": "1.0.0",
+  "description": "Logging on Docker",
+  "author": "David Ostrovsky <dostrovsky@proofpoint.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "winston": "1.0.0",
+    "winston-logstash": "*"
+  }
+}

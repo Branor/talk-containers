@@ -1,0 +1,12 @@
+docker build -t branor/nodeapp:1.1 .
+docker push branor/nodeapp:1.1
+docker service create --name nodeapp -p 8080:8080 --replicas=5 branor/nodeapp:1.1
+docker service update --update-delay 10s nodeapp
+docker service inspect --pretty nodeapp
+
+docker build -t branor/nodeapp:1.2 .
+docker push branor/nodeapp:1.2
+docker service update --image branor/nodeapp:1.2 nodeapp
+docker service inspect --pretty nodeapp
+
+docker exec -it <id> bash

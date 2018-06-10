@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+spec:
+  selector:
+    matchLabels:
+      app: nodeapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - name: nodeapp
+        image: branor/nodeapp:1.0
+        ports:
+        - containerPort: 6060
+        resources:
+          limits:
+            # cpu units are cores
+            cpu: 500m
+            # memory units are bytes
+            memory: 64Mi
+          requests:
+            # cpu units are cores
+            cpu: 500m
+            # memory units are bytes
+            memory: 64Mi
+        livenessProbe:
+          httpGet:
+            # Path to probe; should be cheap, but representative of typical behavior
+            path: /monitoring/health
+            port: 6060
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /monitoring/ready
+            port: 6060
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 15
+
+        
+

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  logger:
+    image: branor/logger:latest
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+
+networks:
+  default:
+    external:
+      name: ndcswarm
