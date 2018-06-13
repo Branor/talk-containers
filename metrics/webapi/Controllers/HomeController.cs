@@ -31,7 +31,7 @@ namespace webapi.Controllers
         }
 
         [HttpGet("container")]
-        public async Task<string> GetMachine(int id)
+        public async Task<string> GetMachine()
         {
             await stats.CountAsync($"get.{System.Environment.MachineName}");
             return $"[FROM: {System.Environment.MachineName}]: You get a container, and you get a container, everybody gets a container!";
