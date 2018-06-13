@@ -15,28 +15,34 @@ namespace webapi.Controllers
             this.stats = stats;
         }
 
-        // GET /
-        [HttpGet("test")]
+        [HttpGet("application")]
         public async Task<string> Get()
         {
             await stats.CountAsync("get");
             return $"[FROM: {System.Environment.MachineName}]: Hello world!";
         }
 
-        // GET /5 
-        [HttpGet("test/{id}")]
+        [HttpGet("application/{id}")]
         public async Task<string> Get(int id)
         {
-            await stats.CountAsync($"get.{id}"); // Terrible idea, don't generate metrics with high cardinality!
+            // Probably a bad idea, metric with high cardinality!
+            await stats.CountAsync($"get.{id}"); 
             return $"[FROM: {System.Environment.MachineName}]: Let's play Good Idea - Bad Idea!";
         }
 
-        // GET /5 
-        [HttpGet("docker/{id}")]
+        [HttpGet("container")]
         public async Task<string> GetMachine(int id)
         {
-            await stats.CountAsync($"get.{System.Environment.MachineName}.{id}");
+            await stats.CountAsync($"get.{System.Environment.MachineName}");
             return $"[FROM: {System.Environment.MachineName}]: You get a container, and you get a container, everybody gets a container!";
+        }
+
+        [HttpGet("container/{id}")]
+        public async Task<string> GetMachine(int id)
+        {
+            // Terrible idea, metric with very high cardinality!
+            await stats.CountAsync($"get.{System.Environment.MachineName}.{id}");
+            return $"[FROM: {System.Environment.MachineName}]: So many metrics! You'll get tired of metrics!";
         }
     }
 }

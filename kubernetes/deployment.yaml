@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: nodeapp
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -20,12 +20,12 @@ spec:
         resources:
           limits:
             # cpu units are cores
-            cpu: 500m
+            cpu: 100m
             # memory units are bytes
             memory: 64Mi
           requests:
             # cpu units are cores
-            cpu: 500m
+            cpu: 100m
             # memory units are bytes
             memory: 64Mi
         livenessProbe:
