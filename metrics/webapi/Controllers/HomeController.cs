@@ -33,7 +33,7 @@ namespace webapi.Controllers
         [HttpGet("container")]
         public async Task<string> GetMachine()
         {
-            await stats.CountAsync($"get.{System.Environment.MachineName}");
+            await stats.CountAsync($"{System.Environment.MachineName}.get");
             return $"[FROM: {System.Environment.MachineName}]: You get a container, and you get a container, everybody gets a container!";
         }
 
@@ -41,7 +41,7 @@ namespace webapi.Controllers
         public async Task<string> GetMachine(int id)
         {
             // Terrible idea, metric with very high cardinality!
-            await stats.CountAsync($"get.{System.Environment.MachineName}.{id}");
+            await stats.CountAsync($"{System.Environment.MachineName}.get.{id}");
             return $"[FROM: {System.Environment.MachineName}]: So many metrics! You'll get tired of metrics!";
         }
     }
