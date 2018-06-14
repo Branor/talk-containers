@@ -31,7 +31,23 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 
 kubectl describe deployment nodeapp
+
+minikube service nodeapp
+
 # update
 
 kubectl apply -f deployment.yaml
 
+# cleanup
+
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml
+
+# helm + charts
+
+helm search wordpress
+helm install stable/wordpress
+
+# helm cleanup
+
+helm delete quoting-emu

@@ -1,9 +1,0 @@
-{"level":"info","message":"Hello world!","timestamp":"2018-06-10T08:13:18.556Z"}
-{"level":"info","message":"Hello world called.","timestamp":"2018-06-10T08:13:26.538Z"}
-{"level":"info","message":"Hello world!","timestamp":"2018-06-10T08:13:53.429Z"}
-{"level":"info","message":"Hello world called.","timestamp":"2018-06-10T08:13:57.742Z"}
-{"level":"info","message":"Logger demo service started","timestamp":"2018-06-10T08:14:54.632Z"}
-{"level":"info","message":"Logger: hello world endpoint called","timestamp":"2018-06-10T08:15:09.247Z"}
-{"level":"info","message":"Logger: hello world endpoint called","timestamp":"2018-06-10T08:15:12.213Z"}
-{"level":"info","message":"Logger demo service started","timestamp":"2018-06-10T08:15:47.824Z"}
-{"level":"info","message":"Logger demo service started","timestamp":"2018-06-10T08:44:13.030Z"}
